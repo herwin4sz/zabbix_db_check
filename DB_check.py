@@ -259,7 +259,11 @@ def single_item_check(item):
         cur = conn.cursor()
         logger.debug("Execute SQL: " + item['sql'])
         cur.execute(item['sql'])
-        res = cur.fetchone()[0]
+        if cur.rowcount == 0:
+            res = "Null"
+        else:
+            res = cur.fetchone()[0]
+        logger.debug("SQL return: " + str(res))
         cur.close()
         conn.close()
     except BaseException, Argument:
