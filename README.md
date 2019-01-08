@@ -20,4 +20,20 @@ For ORACLE database:
   
     export LD_LIBRARY_PATH=<some path you place the oracle_instantclient>
   
+
+# Config monitor
+  See the sample.conf file it should have enough information.
+
+# How to run
+  Simply run as: python DB_check.py my.conf
+  
+  Run in background: nohup python DB_check.py my.conf >>/dev/null 2>&1 &
+  
+  If you have lots of database to be monitored, you can run like this
+  
+    python DB_check.py database01.conf
+    
+    python DB_check.py database02.conf
+    
+    ....
   
