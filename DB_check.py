@@ -259,10 +259,11 @@ def single_item_check(item):
         cur = conn.cursor()
         logger.debug("Execute SQL: " + item['sql'])
         cur.execute(item['sql'])
-        if cur.rowcount == 0:
-            res = "Null"
-        else:
+        try:
             res = cur.fetchone()[0]
+        except TypeError:
+            res = "Null"
+            pass
         logger.debug("SQL return: " + str(res))
         cur.close()
         conn.close()
